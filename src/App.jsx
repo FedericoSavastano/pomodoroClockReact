@@ -172,6 +172,16 @@ function App() {
                     </button>
                 )}
             </div>
+            <footer>
+                <span>
+                    Made with 🍅 by{' '}
+                    <a
+                        href='https://federicosavastano.netlify.app'
+                        target='_blank'>
+                        Federico_Savastano
+                    </a>
+                </span>
+            </footer>
         </div>
     );
 }

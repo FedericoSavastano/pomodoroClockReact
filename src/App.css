@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+body {
+    margin: 0 auto;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 100vh;
+    background-color: rgb(204, 12, 12);
+   
+
+    transition: background-color 0.5s ease-in-out 0s;
+}
+
+
+.clock {
+    display: grid;
+    grid-template-columns: 1fr 10px 1fr 20px;
+    font-size: 6rem;
+    background-color: orange;
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 3%;
+    min-width: 40vw;
+    max-width: 50vw;
+}
+
+.clockItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    text-wrap: nowrap;
+}
+
+.clockMiliseconds {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 1rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    font-family: 'Orbitron', sans-serif;
+
+    border-radius: 10px;
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    cursor: pointer;
+    background-color: rgb(231, 131, 18);
+    border: 2px solid black;
+}
+
+
+.shadow {
+    -webkit-box-shadow: 10px 12px 5px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 12px 5px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 12px 5px -9px rgba(0, 0, 0, 0.75);
+}
+
+.button-shadow {
+    -webkit-box-shadow: inset -6px -7px 8px -4px rgba(87, 85, 87, 1),
+        10px 12px 5px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset -6px -7px 8px -4px rgba(87, 85, 87, 1),
+        10px 12px 5px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: inset -6px -7px 8px -4px rgba(87, 85, 87, 1),
+        10px 12px 5px -9px rgba(0, 0, 0, 0.75);
+}
+
+.form {
+    display: grid;
+    align-items: center;
+    gap: 20px;
+    grid-template-columns: 1fr 1.5fr;
+    border-radius: 7px;
+    background-color: rgb(231, 131, 18);
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 1%;
+
+    
+
+    min-width: 40vw;
+    max-width: 50vw;
+    
+    padding: 3%;
+}
+
+ 
+
+
+
+input {
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 25px;
+    text-align: center;
+    padding: 1.5% 2%;
+    border-bottom: 2px solid #ccc;
+    color: #302f2f;
+    box-sizing: border-box;
+    background-color: rgb(221 199 173);
+}
+
+input:disabled {
+    background-color: rgb(189 66 49);
+    transition: 0.5s ease-in-out;
+}
+
+.clock-animation {
+    animation-name: backgroundClockColor;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+@keyframes backgroundClockColor {
+    0% {
+        background: orange;
+    }
+    25% {
+        background: rgb(245, 174, 41);
+    }
+    50% {
+        background: orange; 
+    }
+    75%{
+        background: rgb(245, 174, 41);
+    }
+    100% {
+        background: orange;
+    }
+ 
+}
+
+
+.focus-background {
+    background-color: #6a0505  ;
+}
+
+.relax-background {
+    background-color:  #6535b7 ;
+}
+
+.success{
+     color: rgb(247, 181, 59);
+    text-shadow: 1px 1px 2px pink;
+    text-align: center;
+}
+
+.title {
+    text-shadow: 1px 1px 2px navajowhite;
+    text-align: center;
+    background-color: rgb(231, 131, 18);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0.4%;
+    margin: 2px;
+}
+
+.error {
+    text-shadow: 1px 1px 2px navajowhite;
+    color: white;
+    text-align: center;
+}
+
+.time-name {
+    margin: 1rem;
+    text-shadow: 1px 1px 2px navajowhite;
+    color: white;
+}
+ 
+ 
+
+/* Media query para pantallas de tamaño medio (tabletas) */
+@media only screen and (max-width: 400px) {
+    /* .clock {
+        font-size: 2rem;
+    } */
+}
+
+/* Media query para pantallas de tamaño medio (tabletas) */
+@media only screen and (max-width: 600px) {
+    .clock {
+        font-size: 4rem;
+        min-width: 70vw;
+        max-width: 80vw;
+        padding: 5%;
+    }
+    
+    .button {
+        font-size: 1rem;
+    }
+ 
+    .form {
+        font-size: 1rem;
+        display: grid;
+        align-items: center;
+        gap: 2rem;
+        border-radius: 7px;
+        grid-template-columns: 1fr 0.5fr;
+        min-width: 70vw;
+        max-width: 80vw;
+    }
+
+    .container {
+        gap: 1rem;
+    }
+}
+
+/* Media query para pantallas grandes (desktops) */
+@media only screen and (min-width: 1024px) {
+    /* body {
+        font-size: 20px;
+    } */
+}

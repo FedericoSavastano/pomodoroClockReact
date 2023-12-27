@@ -11,18 +11,16 @@ const startaudio = new Audio(startsound);
 function App() {
     const [time, setTime] = useState(0);
     const [isRunning, setIsRunning] = useState(null);
-    const [error, setError] = useState("");
+    const [error, setError] = useState('');
     const [isFinished, setIsFinished] = useState(false);
-    const [successMessage, setSuccessMessage] = useState("")
+    const [successMessage, setSuccessMessage] = useState('');
     const [maxTime, setMaxTime] = useState(20);
     const [breakTime, setBreakTime] = useState(10);
     const [isFocusTime, setIsFocusTime] = useState(null);
 
-
     let minutes = ('0' + Math.floor((time / 60000) % 60)).slice(-2);
     let seconds = ('0' + Math.floor((time / 1000) % 60)).slice(-2);
     let miliseconds = ('0' + Math.floor((time / 10) % 100)).slice(-2);
-
 
     //Makes time advance or stop if isRunning is modified
     useEffect(() => {
@@ -32,8 +30,7 @@ function App() {
                 setTime((time) => time + 10);
             }, 10);
             setIsFinished(false);
-            setSuccessMessage("");
-            
+            setSuccessMessage('');
         } else {
             clearInterval(interval);
             setIsFocusTime(null);
@@ -45,19 +42,28 @@ function App() {
     //Sets Focus time/ Relax time and stops clock when time is modified
     useEffect(() => {
         if (isRunning) {
-            
-            setIsFocusTime(Number(seconds) <= maxTime - breakTime)
-                
-            if( Number(seconds) >= maxTime ){  setIsRunning(false) ; setIsFinished(true); 
-                setSuccessMessage(`✨Good! you've completed a cicle of ${maxTime - breakTime} seconds focus and ${breakTime} seconds relax✨`)
-            } ;
+            setIsFocusTime(Number(seconds) <= maxTime - breakTime);
+
+            if (Number(seconds) >= maxTime) {
+                setIsRunning(false);
+                setIsFinished(true);
+                setSuccessMessage(
+                    `✨Good! you've completed a cicle of ${
+                        maxTime - breakTime
+                    } seconds focus and ${breakTime} seconds relax✨`
+                );
+            }
         }
     }, [time]);
 
     //Plays audio when is focus time or is relax time, once and after the clock started
-    useEffect(()=>{
-       isFocusTime!=null ? isFocusTime ? startaudio.play() : relaxaudio.play() : null
-    }, [isFocusTime])
+    useEffect(() => {
+        isFocusTime != null
+            ? isFocusTime
+                ? startaudio.play()
+                : relaxaudio.play()
+            : null;
+    }, [isFocusTime]);
 
     function handleChangeMaxTime(time) {
         setMaxTime(time);
@@ -73,11 +79,11 @@ function App() {
             setTime(0);
             return;
         }
-        if (isFinished && maxTime === Number(seconds) ) {
-            setError("Restart clock or select new total and break time")
+        if (isFinished && maxTime === Number(seconds)) {
+            setError('Restart clock or select new total and break time');
             return;
         }
-        setError("");
+        setError('');
         btnaudio.play();
         setIsRunning(true);
     }
@@ -93,7 +99,14 @@ function App() {
     }
 
     return (
-        <div className= {`container ${isFocusTime!= null ? isFocusTime? 'focus-background' : 'relax-background' : ""}`} >
+        <div
+            className={`container ${
+                isFocusTime != null
+                    ? isFocusTime
+                        ? 'focus-background'
+                        : 'relax-background'
+                    : ''
+            }`}>
             <h2 className='title shadow'>🍅 Pomodoro Clock 🍅</h2>
             {error && <span className='error'>{error}</span>}
             {isFinished && <span className='success'> {successMessage} </span>}
@@ -103,7 +116,9 @@ function App() {
                     type='number'
                     value={maxTime}
                     disabled={isRunning}
-                    onChange={(e) => handleChangeMaxTime(Number(e.target.value))}
+                    onChange={(e) =>
+                        handleChangeMaxTime(Number(e.target.value))
+                    }
                 />
 
                 <label>Break time</label>
@@ -111,7 +126,9 @@ function App() {
                     type='number'
                     value={breakTime}
                     disabled={isRunning}
-                    onChange={(e) => handleChangeBreakTime(Number(e.target.value))}
+                    onChange={(e) =>
+                        handleChangeBreakTime(Number(e.target.value))
+                    }
                 />
             </form>
             <h4 className='time-name'>

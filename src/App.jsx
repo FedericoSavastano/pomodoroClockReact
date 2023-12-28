@@ -75,7 +75,7 @@ function App() {
 
     function handleClickStart() {
         if (maxTime < breakTime) {
-            setError("Break Time can't be higher than Max Time");
+            setError("Break time can't be higher than total time");
             setTime(0);
             return;
         }

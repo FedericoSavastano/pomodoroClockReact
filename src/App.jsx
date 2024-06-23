@@ -48,7 +48,7 @@ function App() {
                 setIsRunning(false);
                 setIsFinished(true);
                 setSuccessMessage(
-                    `✨Good! you've completed a cicle of ${
+                    `✨Good! you've completed a cycle of ${
                         maxTime - breakTime
                     } seconds focus and ${breakTime} seconds relax✨`
                 );
